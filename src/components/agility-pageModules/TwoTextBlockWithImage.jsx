@@ -40,7 +40,7 @@ const TwoTextBlockWithImage = ({ module }) => {
 
   return (
     <div className="relative px-8">
-      <div className="flex flex-col md:w-6/12 md:flex-row justify-between max-w-screen-sm mx-auto md:py-24 items-center">
+      <div className="flex flex-col md:flex-row justify-between max-w-screen-md mx-auto md:py-24 items-center">
       <div
           className={`md:w-6/12 mt-16 md:mt-0 pr-4`}
         >
@@ -65,7 +65,7 @@ const TwoTextBlockWithImage = ({ module }) => {
           )}
           
           <div className="g:py-8 text-center md:text-left">
-            <h2 className="font-display text-4xl font-black text-secondary-500 md:text-3xl lg:text-5xl tracking-wide text-center mt-4 lg:leading-tight md:text-left">
+            <h2 className="font-display text-2xl font-black text-secondary-500 tracking-wide text-center mt-4 lg:leading-tight md:text-left">
               {customFields.title}
             </h2>
             <p className="mt-4 text-center md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-200">
@@ -80,7 +80,7 @@ const TwoTextBlockWithImage = ({ module }) => {
           </div>
         </div>
         <div
-          className={`md:w-6/12 mt-16 md:mt-0 pl-4`}
+          className={`md:w-6/12 mt-16 md:mt-0 pl-4 self-start`}
         >
             {customFields.primaryButtonBlock2 ? (
             <Link to={customFields.primaryButtonBlock2.href}>
@@ -103,7 +103,7 @@ const TwoTextBlockWithImage = ({ module }) => {
           )}
 
           <div className="g:py-8 text-center md:text-left">
-            <h2 className="font-display text-4xl font-black text-secondary-500 md:text-3xl lg:text-5xl tracking-wide text-center mt-4 lg:leading-tight md:text-left">
+            <h2 className="font-display text-2xl font-black text-secondary-500 tracking-wide text-center mt-4 lg:leading-tight md:text-left">
               {customFields.titleBlock2}
             </h2>
             <p className="mt-4 text-center md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-200">
