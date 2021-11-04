@@ -42,7 +42,7 @@ const TwoTextBlockWithImage = ({ module }) => {
     <div className="relative px-8">
       <div className="flex flex-col md:flex-row justify-between max-w-screen-md mx-auto md:py-24 items-center">
       <div
-          className={`md:w-6/12 mt-16 md:mt-0 pr-4`}
+          className={`md:w-6/12 mt-16 md:mt-0 xs:pr-0 md:pr-4`}
         >
             {customFields.primaryButton ? (
             <Link to={customFields.primaryButton.href}>
@@ -80,7 +80,7 @@ const TwoTextBlockWithImage = ({ module }) => {
           </div>
         </div>
         <div
-          className={`md:w-6/12 mt-16 md:mt-0 pl-4 self-start`}
+          className={`md:w-6/12 mt-16 md:mt-0 xs:pl-0 md:pl-4 self-start`}
         >
             {customFields.primaryButtonBlock2 ? (
             <Link to={customFields.primaryButtonBlock2.href}>
