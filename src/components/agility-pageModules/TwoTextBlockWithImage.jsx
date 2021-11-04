@@ -40,7 +40,7 @@ const TwoTextBlockWithImage = ({ module }) => {
 
   return (
     <div className="relative px-8">
-      <div className="flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24 items-center">
+      <div className="flex flex-col md:w-6/12 md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24 items-center">
       <div
           className={`md:w-6/12 mt-16 md:mt-0`}
         >
@@ -49,8 +49,8 @@ const TwoTextBlockWithImage = ({ module }) => {
               <AgilityImage
                 image={customFields.image}
                 layout="constrained"
-                width="768"
-                height="512"
+                width="500"
+                height="auto"
                 className="rounded-lg object-cover object-center cursor-pointer"
               />
             </Link>
@@ -58,8 +58,8 @@ const TwoTextBlockWithImage = ({ module }) => {
             <AgilityImage
               image={customFields.image}
               layout="constrained"
-              width="768"
-              height="512"
+              width="500"
+              height="auto"
               className="rounded-lg object-cover object-center cursor-pointer"
             />
           )}
