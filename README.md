@@ -1,5 +1,5 @@
 # Agility CMS & Gatsby Starter
-Test to see if if we can push to github
+
 This is sample Gatsby starter site that uses Agility CMS and aims to be a foundation for building fully static sites using Gatsby and Agility CMS.
 
 [Live Website Demo](https://agilitycmsgatsbystarter.gatsbyjs.io/)

@@ -4,12 +4,14 @@ import PostsListing from "./PostsListing"
 import PostDetails from "./PostDetails"
 import Heading from "./Heading"
 import TextBlockWithImage from "./TextBlockWithImage"
+import TwoTextBlockWithImage from "./TwoTextBlockWithImage"
 
 // All of the Agility Page Module Components that are in use in this site need to be imported into this index file.
 // Place Page Modules in allModules array below, passing in a name and the component.
 
 const allModules = [
   { name: "TextBlockWithImage", module: TextBlockWithImage },
+  { name: "TwoTextBlockWithImage", module: TwoTextBlockWithImage },
   { name: "Heading", module: Heading },
   { name: "FeaturedPost", module: FeaturedPost },
   { name: "PostsListing", module: PostsListing },
