@@ -1,6 +1,8 @@
 import React from "react"
 import { Link } from "gatsby"
 import { AgilityImage } from "@agility/gatsby-image-agilitycms"
+import styled from 'styled-components'
+
 
 const TwoTextBlockWithImage = ({ module }) => {
   // get module fields
@@ -14,112 +16,204 @@ const TwoTextBlockWithImage = ({ module }) => {
     // if relative link, use Gatsby Link
     if (isUrlAbsolute(url) === false) {
       return (
-        <Link
+        <StyledLink
           to={url}
           title={text}
           target={target}
-          className="inline-block mt-8 md:mt-8 px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-primary-500 hover:bg-primary-700 focus:outline-none focus:border-primary-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150"
         >
           {text}
-        </Link>
+        </StyledLink>
       )
     } else {
       // else use anchor tag
       return (
-        <a
+        <StyledLinkA
           href={url}
           title={text}
           target={target}
-          className="inline-block mt-8 md:mt-8 px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-primary-500 hover:bg-primary-700 focus:outline-none focus:border-primary-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150"
         >
           {text}
-        </a>
+        </StyledLinkA>
       )
     }
   }
 
   return (
-    <div className="relative px-8">
-      <div className="flex flex-col md:flex-row justify-between max-w-screen-md mx-auto md:py-24 items-center">
-      <div
-          className={`md:w-6/12 mt-16 md:mt-0 xs:pr-0 md:pr-4`}
-        >
+      <StyledDiv>
+      <LeftBlock>
             {customFields.primaryButton ? (
             <Link to={customFields.primaryButton.href}>
-              <AgilityImage
+              <StyledAgilityImage
                 image={customFields.image}
                 layout="constrained"
                 width="768"
                 height="512"
-                className="rounded-lg object-cover object-center cursor-pointer"
               />
             </Link>
           ) : (
-            <AgilityImage
+            <StyledAgilityImage
               image={customFields.image}
               layout="constrained"
               width="768"
               height="512"
-              className="rounded-lg object-cover object-center cursor-pointer"
             />
           )}
           
-          <div className="g:py-8 text-center md:text-left">
-            <h2 className="font-display text-2xl font-black text-secondary-500 tracking-wide text-center mt-4 lg:leading-tight md:text-left">
+          <TextBlock>
+            <StyledH2>
               {customFields.title}
-            </h2>
-            <p className="mt-4 text-center md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-200">
+            </StyledH2>
+            <TextStyledP>
               {customFields.content}
-            </p>
+            </TextStyledP >
             {customFields.primaryButton &&
               generateLink(
                 customFields.primaryButton.href,
                 customFields.primaryButton.target,
                 customFields.primaryButton.text
               )}
-          </div>
-        </div>
-        <div
-          className={`md:w-6/12 mt-16 md:mt-0 xs:pl-0 md:pl-4 self-start`}
-        >
+          </TextBlock>
+        </LeftBlock>
+        <RightBlock >
             {customFields.primaryButtonBlock2 ? (
             <Link to={customFields.primaryButtonBlock2.href}>
-              <AgilityImage
+              <StyledAgilityImage
                 image={customFields.imageBlock2}
                 layout="constrained"
                 width="768"
                 height="512"
-                className="rounded-lg object-cover object-center cursor-pointer"
               />
             </Link>
           ) : (
-            <AgilityImage
+            <StyledAgilityImage
               image={customFields.imageBlock2}
               layout="constrained"
               width="768"
               height="512"
-              className="rounded-lg object-cover object-center cursor-pointer"
             />
           )}
 
-          <div className="g:py-8 text-center md:text-left">
-            <h2 className="font-display text-2xl font-black text-secondary-500 tracking-wide text-center mt-4 lg:leading-tight md:text-left">
+          <TextBlock>
+            <StyledH2>
               {customFields.titleBlock2}
-            </h2>
-            <p className="mt-4 text-center md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-200">
+            </StyledH2>
+            <TextStyledP >
               {customFields.contentBlock2}
-            </p>
+            </TextStyledP >
             {customFields.primaryButtonBlock2 &&
               generateLink(
                 customFields.primaryButtonBlock2.href,
                 customFields.primaryButtonBlock2.target,
                 customFields.primaryButtonBlock2.text
               )}
-          </div>
-        </div>
-      </div>
-    </div>
+          </TextBlock>
+        </RightBlock>
+      </StyledDiv>
+    
   )
 }
 
 export default TwoTextBlockWithImage
+
+//Styles for this component
+const StyledDiv = styled.div`
+  display: flex;
+  flex-direction:column;
+  justify-content: space-between;
+  align-items: center;
+  max-width:999px;
+  margin-left:auto;
+  margin-right:auto;
+  padding-left:2em;
+  padding-right:2em;
+  @media only screen and (min-width: 999px) {
+    flex-direction:row;
+    padding-top:6rem;
+    padding-bottom:6rem;
+  }
+`
+const LeftBlock = styled.div`
+margin-top:4em;
+@media only screen and (min-width:999px){
+  width:50%;
+  margin-top:0;
+  padding-right:1em;
+}
+@media only screen and (max-width:998px){
+  padding-right:0;
+}
+`
+const RightBlock = styled.div`
+margin-top:4em;
+@media only screen and (min-width:999px){
+  width:50%;
+  margin-top:0;
+  padding-right:1em;
+  align-self: flex-start;
+}
+@media only screen and (max-width:998px){
+  padding-right:0;
+}
+`
+const TextBlock = styled.div `
+text-align:center;
+
+@media (min-width: 768px) {
+    text-align: left;
+}`
+const StyledH2 = styled.h2 `
+  color: rgba(36, 62, 99, 100);
+  font-weight:900;
+  font-size:1.5em;
+  line-height:2rem;
+  margin-top:1em;
+  text-align:center;
+
+@media (min-width: 768px) {
+  text-align:left;
+}
+`
+const TextStyledP = styled.p `
+font-size: 0.875rem;
+line-height: 1.75rem;
+color: rgba(102, 120, 146, 100);
+font-weight:500;
+margin-top:1em;
+margin-bottom:2em;
+@media (min-width: 1024px) {
+  text-align:left;
+  font-size: 1.125rem;
+}
+@media (min-width: 768px) {
+  text-align:left;
+  font-size: 1rem;
+}
+`
+const StyledAgilityImage = styled(AgilityImage)`
+border-radius: 0.5rem;
+object-fit:cover;
+object-position:center;
+cursor: pointer;
+`
+const StyledLink = styled(Link)`
+color:white;
+font-weight:500;
+font-size: 1rem;
+padding: 0.75rem 2rem 0.75rem 2rem;
+border-radius: 0.375rem;
+background-color: rgba(100, 21, 255, 100);
+&:hover {
+  background-color: rgba(80, 17, 204, 100);
+}
+`
+const StyledLinkA = styled.a`
+color:white;
+font-weight:500;
+font-size: 1rem;
+padding: 0.75rem 2rem 0.75rem 2rem;
+border-radius: 0.375rem;
+background-color: rgba(100, 21, 255, 100);
+&:hover {
+  background-color: rgba(80, 17, 204, 100);
+}
+`
