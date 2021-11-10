@@ -1,35 +1,16 @@
 import React from "react"
-import styled from 'styled-components'
-import "react-multi-carousel/lib/styles.css";
+import Carousel from "./Carousel"
+import styled from "styled-components"
 import { AgilityImage } from "@agility/gatsby-image-agilitycms"
-import Carousel from "react-multi-carousel";
 
-const ImageCarousel = ({ items }) => {
-  const responsive = {
-    superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
-      items: 5,
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2,
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-    },
-  }
-
+// team member-specific carousel wrapper
+// use this file to customize the teamMemberCarousel styles
+export const TeamMemberCarousel = ({ members, ...props }) => {
   return (
     <div className="relative px-8">
       <div className="max-w-screen-xl mx-auto my-12 md:mt-18 lg:mt-20">
-        <Carousel responsive={responsive} infinite={true} autoPlay>
-          {items.map((m, i) => (
+        <Carousel {...props}>
+          {members.map((m, i) => (
             <StyledCard key={`${i}`}>
               <div className="bg-gray-100 p-8 border-2 border-t-0 rounded-b-lg">
                 <h1>Name: {m.customFields.jobTitle}</h1>
@@ -50,10 +31,9 @@ const ImageCarousel = ({ items }) => {
   )
 }
 
-export default ImageCarousel
+export default TeamMemberCarousel
 
 const StyledCard = styled.div`
   margin: 5px;
-//   height: 300px;
   width: auto;
 `

@@ -2,7 +2,7 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import { AgilityImage } from "@agility/gatsby-image-agilitycms"
 
-import ImageCarousel from "../common/Carousel"
+import TeamMemberCarousel from "../common/Carousel/TeamMemberCarousel"
 
 const TeamMemberList = () => {
   // graphql query for member lists data
@@ -27,14 +27,17 @@ const TeamMemberList = () => {
     }
   `)
 
-  
   const { nodes: TeammemberList } = data.Teammember
   console.log("Team Member List data", data, TeammemberList.length)
 
   return (
     <>
       {TeammemberList.length > 2 ? (
-        <ImageCarousel items={TeammemberList}  />
+        <TeamMemberCarousel
+          members={TeammemberList}
+          autoPlay={true}
+          infinite={true}
+        />
       ) : (
         <div className="relative px-8 mb-12">
           <div className="max-w-screen-xl mx-auto">
@@ -46,8 +49,8 @@ const TeamMemberList = () => {
                 >
                   <div className="flex-col group mb-8 md:mb-0">
                     <div className="bg-gray-100 p-8 border-2 border-t-0 rounded-b-lg">
-                      <h1>Name: {m.customFields.jobTitle}</h1>
-                      <h1>Title: {m.customFields.teamMemberName}</h1>
+                      <h1>Name: {m.customFields.teamMemberName}</h1>
+                      <h1>Title: {m.customFields.jobTitle}</h1>
                     </div>
                     <div className="relative h-64">
                       <AgilityImage
