@@ -25,6 +25,10 @@
     "react-dom": "^17.0.1",
     "react-helmet": "^5.2.1",
     "react-icons": "^4.2.0",
+<<<<<<< HEAD
+=======
+    "react-multi-carousel": "^2.6.5",
+>>>>>>> bdc6782a993b8cd63f2649ac8958d838a969ae74
     "styled-components": "^5.3.3",
     "truncate-html": "^1.0.2"
   },
