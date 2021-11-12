@@ -1,40 +1,49 @@
-import React from "react"
+import React, {useState} from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import Map from "../common/Map/Map"
+import LocationTable from "../common/Map/LocationTable"
+import styled from "styled-components"
 
 const LocationList = () => {
-    const data = useStaticQuery(graphql`
+  const [center, setCenter] = useState(null)
+  const data = useStaticQuery(graphql`
     {
-        Location: allAgilityLocation {
-          nodes {
-            customFields {
-              city
-              country
-              latitude
-              locationName
-              longitude
-              postalCode
-              province
-              street
-            }
-            id
+      Location: allAgilityLocation {
+        nodes {
+          customFields {
+            city
+            country
+            latitude
+            locationName
+            longitude
+            postalCode
+            province
+            street
           }
         }
-      }      
+      }
+    }
   `)
 
-  const { nodes: LocationList } = data.Location
+  const { nodes  } = data.Location
+  const LocationList = nodes.map(m=> m.customFields)
 
-  console.log('location data',data)
   return (
-    <div className="relative px-8">
-      <div className="max-w-screen-xl mx-auto my-12 md:mt-18 lg:mt-20">
-
-      <Map markers={LocationList} />     
-      </div>
-    </div>
+    <Container>
+        {LocationList && LocationList.length && (
+          <>
+            <LocationTable markers={LocationList} onClickFn={setCenter} />
+            <Map markers={LocationList} center={center}/>
+          </>
+        )}
+    </Container>
   )
 }
 
 export default LocationList
 
+const Container = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    margin: 0 15px;
+`
