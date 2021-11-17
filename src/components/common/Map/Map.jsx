@@ -1,4 +1,4 @@
-import React, { useMemo } from "react"
+import React from "react"
 import GoogleMapReact from "google-map-react"
 import MapMarker from "./MapMarker"
 
