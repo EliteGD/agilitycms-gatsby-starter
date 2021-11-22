@@ -31,7 +31,7 @@ jobs:
       env:
         AGILITY_GUID: ${{ secrets.AGILITY_GUID }}
         AGILITY_API_KEY: ${{ secrets.AGILITY_API_KEY }}
-        GOOGLE_MAPS_API: ${{ secrets.GOOGLE_MAPS_API }}
+        GATSBY_MAPS_API: ${{ secrets.GATSBY_MAPS_API }}
         TEST_API: ${{ secrets.TEST_API }}
 
   close_pull_request_job:

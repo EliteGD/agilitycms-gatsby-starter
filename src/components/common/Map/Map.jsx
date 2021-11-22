@@ -19,7 +19,7 @@ const Map = ({ markers, center: currCenter }) => {
     <div style={{ height: "600px", width: "100%" }}>
       <GoogleMapReact
         // take gmaps api from env variable
-        bootstrapURLKeys={{ key: process.env.GOOGLE_MAPS_API }}
+        bootstrapURLKeys={{ key: process.env.GATSBY_MAPS_API }}
         defaultCenter={ defaultProps.center}
         defaultZoom={defaultProps.zoom}
         yesIWantToUseGoogleMapApiInternals
