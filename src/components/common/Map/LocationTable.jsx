@@ -2,7 +2,6 @@ import React from "react"
 import styled from "styled-components"
 
 const LocationTable = ({ markers: locationData, onClickFn }) => {
-  console.log(locationData, "location data")
 
   return (
     <Container>

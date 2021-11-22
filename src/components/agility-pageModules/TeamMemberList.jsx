@@ -28,7 +28,6 @@ const TeamMemberList = () => {
   `)
 
   const { nodes: TeammemberList } = data.Teammember
-  console.log("Team Member List data", data, TeammemberList.length)
 
   return (
     <>
