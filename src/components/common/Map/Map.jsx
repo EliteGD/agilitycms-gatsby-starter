@@ -13,7 +13,7 @@ const Map = ({ markers, center: currCenter }) => {
     zoom: 11,
   }
 
-  console.log('some api test',process.env.TEST_API)
+  console.log('some api test',process.env.GATSBY_TEST_API)
 
   return (
     <div style={{ height: "600px", width: "100%" }}>
