@@ -7,21 +7,20 @@ import { AgilityImage } from "@agility/gatsby-image-agilitycms"
 // use this file to customize the teamMemberCarousel styles
 export const TeamMemberCarousel = ({ members, ...props }) => {
   return (
-    <div className="relative px-8">
-      <div className="max-w-screen-xl mx-auto my-12 md:mt-18 lg:mt-20">
+    <div>
+      <div className="">
         <Carousel {...props}>
           {members.map((m, i) => (
             <StyledCard key={`${i}`}>
-              <div className="bg-gray-100 p-8 border-2 border-t-0 rounded-b-lg">
-                <h1>Name: {m.customFields.jobTitle}</h1>
-                <h1>Title: {m.customFields.teamMemberName}</h1>
+              <div>
+                <StyledH2> {m.customFields.jobTitle} </StyledH2>
+                <StyledName>{m.customFields.teamMemberName}</StyledName>
               </div>
-              <AgilityImage
+              <StyledAgilityImage
                 image={m.customFields.teamMemberPhoto}
                 layout="constrained"
                 width="768"
                 height="512"
-                className="rounded-lg object-cover object-center cursor-pointer"
               />
             </StyledCard>
           ))}
@@ -32,8 +31,41 @@ export const TeamMemberCarousel = ({ members, ...props }) => {
 }
 
 export default TeamMemberCarousel
+var colors = ["#AE86AA", "#6E9D30", "#F39A1D", "#CB957F"];
 
 const StyledCard = styled.div`
-  margin: 5px;
+  margin: 15px;
   width: auto;
+  background-color: #AE86AA;
+  border-radius: 0.5rem;
+  padding:20px;
+
+  & + & {
+    background-color:#6E9D30;
+  }
 `
+const StyledAgilityImage = styled(AgilityImage)`
+border-radius: 0.5rem;
+object-fit:cover;
+object-position:center;
+cursor: pointer;
+&:hover {
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  filter: grayscale(100%);
+  transition: all 0.5s ease;
+}
+`
+
+
+const StyledH2 = styled.h2`
+font-size:1.5em;
+color:#FFFFFF;
+`
+const StyledName = styled.p`
+font-size: 1.2em;
+color:#243E63;
+font-weight:bold;
+padding-bottom:10px;
+`
+
