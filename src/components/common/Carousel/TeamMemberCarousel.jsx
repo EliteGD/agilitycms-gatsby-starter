@@ -13,6 +13,7 @@ export const TeamMemberCarousel = ({ members, ...props }) => {
           {members.map((m, i) => (
             <StyledCard key={`${i}`}>
               <div>
+                
                 <StyledH2> {m.customFields.jobTitle} </StyledH2>
                 <StyledName>{m.customFields.teamMemberName}</StyledName>
               </div>
@@ -31,18 +32,23 @@ export const TeamMemberCarousel = ({ members, ...props }) => {
 }
 
 export default TeamMemberCarousel
-var colors = ["#AE86AA", "#6E9D30", "#F39A1D", "#CB957F"];
+var colors = ["#AE86AA", "#6E9D30", "#F39A1D"];
+var useColor = '#AE86AA';
+
+function colorDiv() {
+  for (var i = 0; i < colors.length; i++){    
+    useColor = colors[i]; 
+  }
+}
 
 const StyledCard = styled.div`
   margin: 15px;
   width: auto;
-  background-color: #AE86AA;
+  background-color: ${colorDiv(2)} ${useColor};
   border-radius: 0.5rem;
   padding:20px;
 
-  & + & {
-    background-color:#6E9D30;
-  }
+
 `
 const StyledAgilityImage = styled(AgilityImage)`
 border-radius: 0.5rem;
