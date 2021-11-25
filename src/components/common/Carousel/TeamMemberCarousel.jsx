@@ -11,7 +11,7 @@ export const TeamMemberCarousel = ({ members, ...props }) => {
       <div className="">
         <Carousel {...props}>
           {members.map((m, i) => (
-            <StyledCard key={`${i}`}>
+            <StyledCard key={`${i}`} color={generateColor(i)}>
               <div>
                 
                 <StyledH2> {m.customFields.jobTitle} </StyledH2>
@@ -32,23 +32,19 @@ export const TeamMemberCarousel = ({ members, ...props }) => {
 }
 
 export default TeamMemberCarousel
-var colors = ["#AE86AA", "#6E9D30", "#F39A1D"];
-var useColor = '#AE86AA';
+const colors = ["#AE86AA", "#6E9D30", "#F39A1D"];
 
-function colorDiv() {
-  for (var i = 0; i < colors.length; i++){    
-    useColor = colors[i]; 
-  }
+function generateColor(i) {
+  const colorIndex = i%3;
+  return colors[colorIndex]
 }
 
 const StyledCard = styled.div`
   margin: 15px;
   width: auto;
-  background-color: ${colorDiv(2)} ${useColor};
+  background-color: ${props => props.color};
   border-radius: 0.5rem;
   padding:20px;
-
-
 `
 const StyledAgilityImage = styled(AgilityImage)`
 border-radius: 0.5rem;
