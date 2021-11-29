@@ -2,7 +2,7 @@ import React from "react"
 import GoogleMapReact from "google-map-react"
 import MapMarker from "./MapMarker"
 
-const Map = ({ markers, center: currCenter }) => {
+const Map = ({ markers, center: currCenter, onClickFn }) => {
   // for now just centre map on first marker
   
   const defaultProps = {
@@ -32,6 +32,12 @@ const Map = ({ markers, center: currCenter }) => {
             lng={m.longitude}
             key={`map-marker-${i}`}
             isActive={isActive(m)}
+            onClick={() => {
+              onClickFn({
+                lat: parseFloat(m.latitude),
+                lng: parseFloat(m.longitude),
+              })
+            }}
           />
         ))}
       </GoogleMapReact>

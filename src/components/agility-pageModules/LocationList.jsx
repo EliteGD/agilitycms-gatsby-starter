@@ -33,7 +33,7 @@ const LocationList = () => {
         {LocationList && LocationList.length && (
           <>
             <LocationTable markers={LocationList} onClickFn={setCenter} center={center}/>
-            <Map markers={LocationList} center={center}/>
+            <Map markers={LocationList} center={center} onClickFn={setCenter}/>
           </>
         )}
     </Container>
