@@ -13,7 +13,8 @@ const Map = ({ markers, center: currCenter }) => {
     zoom: 11,
   }
 
-  console.log('some api test',process.env.GATSBY_TEST_API)
+
+  const isActive = (m) => currCenter && (parseFloat( m.latitude) === currCenter.lat) && (parseFloat( m.longitude) === currCenter.lng)
 
   return (
     <div style={{ height: "600px", width: "100%" }}>
@@ -30,6 +31,7 @@ const Map = ({ markers, center: currCenter }) => {
             lat={m.latitude}
             lng={m.longitude}
             key={`map-marker-${i}`}
+            isActive={isActive(m)}
           />
         ))}
       </GoogleMapReact>

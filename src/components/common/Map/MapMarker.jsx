@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
-const Marker = ({ text, onClick }) => <Wrapper alt={text} onClick={onClick} />
+const Marker = ({ text, ...props}) => <Wrapper alt={text} {...props}/>
 
 Marker.defaultProps = {
   onClick: null,
@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   left: 50%;
   width: 18px;
   height: 18px;
-  background-color: red;
+  background-color: ${ props => props.isActive ? 'orangered' : 'red' };
   border: 2px solid #fff;
   border-radius: 100%;
   user-select: none;
@@ -24,4 +24,5 @@ const Wrapper = styled.div`
   &:hover {
     z-index: 1;
   }
+
 `
