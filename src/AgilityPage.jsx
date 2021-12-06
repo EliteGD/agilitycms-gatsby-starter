@@ -6,6 +6,8 @@ import PreviewBar from "./components/common/PreviewBar"
 import SiteHeader from "./components/common/SiteHeader"
 import SiteFooter from "./components/common/SiteFooter"
 import SEO from "./components/common/SEO"
+import algoliasearch from 'algoliasearch';
+import { InstantSearch, SearchBox, Hits } from 'react-instantsearch-dom';
 
 //Our query to get the our page data and check for a dynamic page item (agilityItem)
 export const query = graphql`
@@ -36,8 +38,12 @@ const AgilityPage = ({ pageContext, data }) => {
       viewModel.dynamicPageItem.seo.metaDescription
   }
 
+  // create algolia search client 
+  const searchClient = algoliasearch('52BBLZ16O6', 'b88b1b6e4cfe5ab2c703dca587e8b505');
+
   return (
-    <>
+    <InstantSearch searchClient={searchClient} indexName="prod_tender-carson">
+      <SearchBox />
       <SEO
         title={viewModel.page.title}
         description={viewModel.page.seo.metaDescription}
@@ -55,7 +61,7 @@ const AgilityPage = ({ pageContext, data }) => {
         </main>
         <SiteFooter />
       </div>
-    </>
+    </InstantSearch>
   )
 }
 
