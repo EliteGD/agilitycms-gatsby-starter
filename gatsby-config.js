@@ -10,41 +10,6 @@ const agilityConfig = {
   isPreview: process.env.AGILITY_API_ISPREVIEW === "true",
 }
 
-// algolia stuff
-
-const myQuery = `{
-  pages: allSitePage {
-    nodes {
-      objectID: id
-      component
-      path
-      componentChunkName
-      internal {
-        type
-        contentDigest
-        owner
-      }
-    }
-    totalCount
-  }
-}
-`;
-
-
-const queries = [
-  {
-    query: myQuery,
-    transformer: ({ data }) => data.pages.nodes, // optional
-    indexName: 'prod_tender-carson', // overrides main index name, optional
-    settings: {
-      // optional, any index settings
-      // Note: by supplying settings, you will overwrite all existing settings on the index
-    },
-    matchFields: ['slug', 'modified'], // Array<String> overrides main match fields, optional
-    mergeSettings: false, // optional, defaults to false.  See notes on mergeSettings below
-  },
-];
-
 /**
  * Configure your Gatsby site with this file.
  *
@@ -57,7 +22,7 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-netlify`,
-   `gatsby-plugin-image`,
+    `gatsby-plugin-image`,
     `gatsby-plugin-react-helmet`,
     {
       //the name of the plugin
@@ -101,9 +66,9 @@ module.exports = {
         appId: process.env.ALGOLIA_APP_ID,
         // Use Admin API key without GATSBY_ prefix, so that the key isn't exposed in the application
         // Tip: use Search API key with GATSBY_ prefix to access the service from within components
-        apiKey: process.env.ALGOLIA_API_KEY,
+        apiKey: process.env.ALGOLIA_ADMIN_KEY,
         indexName: process.env.ALGOLIA_INDEX_NAME, // for all queries
-        queries,
+        queries: require("./src/utils/algolia-queries"),
         chunkSize: 10000, // default: 1000
         settings: {
           // optional, any index settings
