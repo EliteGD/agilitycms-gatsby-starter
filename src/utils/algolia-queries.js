@@ -4,9 +4,9 @@ const myQuery = `{
   pages: allSitePage {
     nodes {
       objectID: id
-      component
+      # component
       path
-      componentChunkName
+      # componentChunkName
       internal {
         type
         contentDigest
