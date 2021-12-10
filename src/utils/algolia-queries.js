@@ -3,7 +3,7 @@
 const myQuery = `{
   pages: allSitePage {
     nodes {
-      objectID: tender
+      objectID: id
       component
       path
       componentChunkName
